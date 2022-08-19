@@ -1,0 +1,18 @@
+{
+  "name": "parking",
+  "version": "1.0.0",
+  "main": "index.js",
+  "scripts": {
+    "dev": "cd public && npm run build && cd .. && firebase emulators:start"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+ssh://git@github.com/GaboDotCodes/parking.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/GaboDotCodes/parking/issues"
+  },
+  "homepage": "https://github.com/GaboDotCodes/parking#readme"
+}
