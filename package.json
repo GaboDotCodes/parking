@@ -3,7 +3,8 @@
   "version": "1.0.0",
   "main": "index.js",
   "scripts": {
-    "dev": "cd public && npm run build && cd .. && firebase emulators:start",
+    "kill": "npx kill-port 4000 5001 8080 5000",
+    "dev": "npm run kill && cd public && npm run build && cd .. && firebase emulators:start",
     "install": "cd public && npm i && cd ../functions && npm i"
   },
   "repository": {
