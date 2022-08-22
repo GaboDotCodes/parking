@@ -2,6 +2,8 @@ import { Router } from '@vaadin/router';
 
 import { onAuthChanged } from './utils/Firebase/auth';
 import createRouter from './utils/Router/createRouter';
+import getMyParking from './utils/Services/Parkings/getMyParking';
+import appState from './utils/State/appState';
 
 window.addEventListener('DOMContentLoaded', () => {
   const app = document.querySelector('#app');
@@ -15,6 +17,11 @@ window.addEventListener('DOMContentLoaded', () => {
         {
           path: '/',
           redirect: '/users/register',
+        },
+        {
+          path: '/setup',
+          component: 'initial-setup',
+          action: async () => { await import('./components/initial-setup/initial-setup'); },
         },
         {
           path: '/users',
@@ -90,7 +97,18 @@ window.addEventListener('DOMContentLoaded', () => {
 
   createRouter(app, routes);
 
-  onAuthChanged((user) => {
-    if (!user) Router.go('/login');
+  onAuthChanged(async (user) => {
+    try {
+      if (user) {
+        appState.token = await user.getIdToken();
+        const { response } = await getMyParking();
+        appState.parking = response;
+        Router.go(appState.parking ? window.location.pathname : '/setup');
+      }
+      if (!user) Router.go('/login');
+    } catch (error) {
+      console.log(error);
+      if (error.code === 'NO_PARKING') Router.go('/setup');
+    }
   });
 });
