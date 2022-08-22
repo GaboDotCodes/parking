@@ -1,33 +1,34 @@
 import { LitElement, html } from 'lit';
 import { Router } from '@vaadin/router';
+import { observeState } from 'lit-element-state';
 
 import { logOut } from '../../utils/Firebase/auth';
 
 import '@vaadin/tabs';
-import '@vaadin/icon';
 
 import '../../components/main-layout/main-layout';
 
 import style from './main-view.css';
+import appState from '../../utils/State/appState';
 
 const render = () => html`
   <style>${style}</style>
   <main-layout>
     <div slot="side-content">
       <vaadin-tabs orientation='vertical' id="main-nav">
-        <vaadin-tab>
+        <vaadin-tab ?disabled=${!appState.parking}>
           <span class="material-icons">person</span>
           <span>Usuarios</span>
         </vaadin-tab>
-        <vaadin-tab>
+        <vaadin-tab ?disabled=${!appState.parking}>
           <span class="material-icons">directions_car</span>
           <span>Vehiculos</span>
         </vaadin-tab>
-        <vaadin-tab>
+        <vaadin-tab ?disabled=${!appState.parking}>
           <span class="material-icons">login</span>
           <span>Registrar ingreso</span>
         </vaadin-tab>
-        <vaadin-tab>
+        <vaadin-tab ?disabled=${!appState.parking}>
           <span class="material-icons">logout</span>
           <span>Registrar salida</span>
         </vaadin-tab>
@@ -44,7 +45,7 @@ const navMenuChanged = ({ detail: { value } }) => {
   Router.go(routes[value]);
 };
 
-class MainView extends LitElement {
+class MainView extends observeState(LitElement) {
   constructor() {
     super();
     this.render = render.bind(this);
