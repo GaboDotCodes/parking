@@ -13,6 +13,10 @@ window.addEventListener('DOMContentLoaded', () => {
       action: async () => { await import('./views/main-view/main-view'); },
       children: [
         {
+          path: '/',
+          redirect: '/users/register',
+        },
+        {
           path: '/users',
           component: 'users-layout',
           action: async () => { await import('./components/users-layout/users-layout'); },
@@ -33,17 +37,60 @@ window.addEventListener('DOMContentLoaded', () => {
             },
           ],
         },
+        {
+          path: '/vehicles',
+          component: 'vehicles-layout',
+          action: async () => { await import('./components/vehicles-layout/vehicles-layout'); },
+          children: [
+            {
+              path: '/',
+              redirect: '/vehicles/register',
+            },
+            {
+              path: '/register',
+              component: 'vehicles-register',
+              action: async () => { await import('./components/vehicles-register/vehicles-register'); },
+            },
+            {
+              path: '/search',
+              component: 'vehicles-search',
+              action: async () => { await import('./components/vehicles-search/vehicles-search'); },
+            },
+          ],
+        },
+        {
+          path: '/register',
+          component: 'register-layout',
+          action: async () => { await import('./components/register-layout/register-layout'); },
+          children: [
+            {
+              path: '/',
+              redirect: '/register/ingress',
+            },
+            {
+              path: '/ingress',
+              component: 'register-ingress',
+              action: async () => { await import('./components/register-ingress/register-ingress'); },
+            },
+            {
+              path: '/exit',
+              component: 'register-exit',
+              action: async () => { await import('./components/register-exit/register-exit'); },
+            },
+          ],
+        },
       ],
+    },
+    {
+      path: '/login',
+      component: 'login-view',
+      action: async () => { await import('./views/login-view/login-view'); },
     },
   ];
 
   createRouter(app, routes);
 
-  // onAuthChanged((user) => {
-  //   if (user) {
-  //     Router.go('/');
-  //   } else {
-  //     Router.go('/');
-  //   }
-  // });
+  onAuthChanged((user) => {
+    if (!user) Router.go('/login');
+  });
 });
