@@ -2,6 +2,7 @@ import { LitElement, html } from 'lit';
 
 const render = () => html`
   <h2>REGISTRO DE USUARIOS</h2>
+
 `;
 
 class UsersRegister extends LitElement {

@@ -23,3 +23,13 @@
   font-feature-settings: 'liga';
   margin-right: 15px;
 }
+
+.avatar{
+  width: 100px;
+  height: 100px;
+  background-image: url(parquadero.png);
+  border-radius: 50%;
+  margin: 0 auto;
+  position: absolute;
+  top: 20px;
+}

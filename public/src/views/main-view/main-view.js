@@ -8,12 +8,19 @@ import '@vaadin/icon';
 
 import '../../components/main-layout/main-layout';
 
-import style from './main-view.css';
+import '@vaadin/button';
 
+import style from './main-view.css';
+import logoUrl from './parquadero.png'
 const render = () => html`
   <style>${style}</style>
   <main-layout>
+
+    
     <div slot="side-content">
+      <div >
+        <img class="avatar" src="${logoUrl}"></img>
+      </div>
       <vaadin-tabs orientation='vertical' id="main-nav">
         <vaadin-tab>
           <span class="material-icons">person</span>
@@ -32,7 +39,14 @@ const render = () => html`
           <span>Registrar salida</span>
         </vaadin-tab>
       </vaadin-tabs>
-      <h2 @click="${logOut}">Logout</h2>
+
+      <vaadin-horizontal-layout theme="spacing" style="align-items: baseline">
+      <vaadin-button @click="${logOut}">Logout
+      <span class="material-icons"slot="prefix">
+person_off
+</span>
+    </vaadin-button>
+      </vaadin-horizontal-layout>
     </div>
     
     <slot slot="main-content"></slot>
