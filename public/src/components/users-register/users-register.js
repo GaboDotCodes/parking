@@ -62,7 +62,6 @@ navigate_next
 </span>
 </vaadin-button>
   </div>
-  
 `;
 
 class UsersRegister extends LitElement {

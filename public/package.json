@@ -9,6 +9,8 @@
   "dependencies": {
     "@vaadin/button": "^23.1.6",
     "@vaadin/combo-box": "^23.1.6",
+    "@vaadin/item": "^23.1.6",
+    "@vaadin/router": "^1.7.4",
     "@vaadin/date-picker": "^23.1.6",
     "@vaadin/email-field": "^23.1.6",
     "@vaadin/form-layout": "^23.1.6",
