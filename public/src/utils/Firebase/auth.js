@@ -11,15 +11,15 @@ import app from './firebase';
 
 const auth = getAuth(app);
 
-if (window.location.hostname === 'localhost') {
+if (['localhost', '127.0.0.1'].includes(window.location.hostname)) {
   connectAuthEmulator(auth, 'http://localhost:9099', { disableWarnings: true });
 }
 
 const provider = new GoogleAuthProvider();
 
-const signInWithGoogle = async (cB) => {
-  await signInWithPopup(auth, provider);
-  cB();
+const signInWithGoogle = async () => {
+  const { user } = await signInWithPopup(auth, provider);
+  return user.getIdToken();
 };
 
 const onAuthChanged = (cB) => onAuthStateChanged(auth, cB);
