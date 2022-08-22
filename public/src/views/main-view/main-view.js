@@ -21,7 +21,7 @@ const render = () => html`
         </vaadin-tab>
         <vaadin-tab>
           <span class="material-icons">directions_car</span>
-          <span>Vehiculos</span>
+          <span>Vehículos</span>
         </vaadin-tab>
         <vaadin-tab>
           <span class="material-icons">login</span>

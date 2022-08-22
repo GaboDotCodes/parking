@@ -7,9 +7,17 @@
     "preview": "vite preview"
   },
   "dependencies": {
-    "@vaadin/icon": "^23.1.5",
+    "@vaadin/button": "^23.1.6",
+    "@vaadin/combo-box": "^23.1.6",
+    "@vaadin/date-picker": "^23.1.6",
+    "@vaadin/email-field": "^23.1.6",
+    "@vaadin/form-layout": "^23.1.6",
+    "@vaadin/horizontal-layout": "^23.1.6",
+    "@vaadin/icon": "^23.1.6",
     "@vaadin/router": "^1.7.4",
     "@vaadin/tabs": "^23.1.5",
+    "@vaadin/text-field": "^23.1.6",
+    "@vaadin/vertical-layout": "^23.1.6",
     "firebase": "^9.9.3",
     "lit": "^2.2.8",
     "lit-element-state": "^1.7.0"
