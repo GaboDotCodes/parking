@@ -71,7 +71,6 @@ class UsersRegister extends LitElement {
   }
 }
 
-
 customElements.define('users-register', UsersRegister);
 
 export default UsersRegister;
