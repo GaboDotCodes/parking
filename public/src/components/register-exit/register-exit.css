@@ -1,0 +1,11 @@
+.container {
+    position: relative;
+    margin: 6%;
+    background-color: #ffffff;
+    padding: 6%;
+    border-radius: 5%;
+  }
+
+  :host {
+    font-family: 'Roboto', sans-serif;
+  }
