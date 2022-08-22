@@ -1,8 +1,14 @@
 import { LitElement, html } from 'lit';
 
+import '../content-layout/content-layout';
+
 const render = () => html`
-  <h1>MENU DE USUARIOS</h1>
-  <slot></slot>
+  <content-layout .items=${[
+    { text: 'Registrar', icon: 'add_circle', link: '/users/register' },
+    { text: 'Consultar', icon: 'search', link: '/users/search' },
+  ]}>
+    <slot></slot>
+  </content-layout>
 `;
 
 class UsersLayout extends LitElement {
