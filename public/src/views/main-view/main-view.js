@@ -17,44 +17,42 @@ import logoUrl from './parquadero.png';
 
 const render = () => html`
   <style>${style}</style>
-  <main-layout>
-
-    
-    <div slot="side-content">
-      <div >
-        <img class="avatar" src="${logoUrl}">
-      </div>
-      <vaadin-tabs orientation='vertical' id="main-nav">
-        <vaadin-tab ?disabled=${!appState.parking}>
-          <span class="material-icons">person</span>
-          <span>Usuarios</span>
-        </vaadin-tab>
-        <vaadin-tab ?disabled=${!appState.parking}>
-          <span class="material-icons">directions_car</span>
-          <span>Vehículos</span>
-        </vaadin-tab>
-        <vaadin-tab ?disabled=${!appState.parking}>
-          <span class="material-icons">login</span>
-          <span>Registrar ingreso</span>
-        </vaadin-tab>
-        <vaadin-tab ?disabled=${!appState.parking}>
-          <span class="material-icons">logout</span>
-          <span>Registrar salida</span>
-        </vaadin-tab>
-      </vaadin-tabs>
-
-      <vaadin-button @click="${logOut}">Logout
-        <span class="material-icons"slot="prefix">person_off</span>
-      </vaadin-button>
+  <vaadin-app-layout primary-section="drawer">
+    <div slot="drawer" class="logo-container">
+      <img class="logo" src="${logoUrl}">
     </div>
-    
-    <slot slot="main-content"></slot>
-  </main-layout>
+    <vaadin-tabs slot="drawer" orientation="vertical" id="main-nav">
+      <vaadin-tab ?disabled=${!appState.parking}>
+        <span class="material-icons">person</span>
+        <span>Usuarios</span>
+      </vaadin-tab>
+      <vaadin-tab ?disabled=${!appState.parking}>
+        <span class="material-icons">directions_car</span>
+        <span>Vehículos</span>
+      </vaadin-tab>
+      <vaadin-tab ?disabled=${!appState.parking}>
+        <span class="material-icons">login</span>
+        <span>Registrar ingreso</span>
+      </vaadin-tab>
+      <vaadin-tab ?disabled=${!appState.parking}>
+        <span class="material-icons">logout</span>
+        <span>Registrar salida</span>
+      </vaadin-tab>
+      <vaadin-tab>
+      <span class="material-icons">person_off</span>
+        <span>Log out</span>
+      </vaadin-tab>
+    </vaadin-tabs>
+    <slot></slot>
+  </vaadin-app-layout>
 `;
 
 const navMenuChanged = ({ detail: { value } }) => {
-  const routes = ['/users', '/vehicles', '/register/ingress', '/register/exit'];
-  Router.go(routes[value]);
+  if (value === 4) logOut();
+  else {
+    const routes = ['/users', '/vehicles', '/register/ingress', '/register/exit'];
+    Router.go(routes[value]);
+  }
 };
 
 class MainView extends observeState(LitElement) {
