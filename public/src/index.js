@@ -103,7 +103,8 @@ window.addEventListener('DOMContentLoaded', () => {
         appState.token = await user.getIdToken();
         const { response } = await getMyParking();
         appState.parking = response;
-        Router.go(appState.parking ? window.location.pathname : '/setup');
+        const mainRoute = window.location.pathname === '/login' ? '/' : window.location.pathname;
+        Router.go(appState.parking ? mainRoute : '/setup');
       }
       if (!user) Router.go('/login');
     } catch (error) {
