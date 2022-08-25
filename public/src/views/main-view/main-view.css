@@ -24,12 +24,17 @@
   margin-right: 15px;
 }
 
-.avatar{
+.logo-container {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  padding: 50px 0px;
+}
+
+.logo{
   width: 100px;
   height: 100px;
   background-image: url(parquadero.png);
   border-radius: 50%;
   margin: 0 auto;
-  position: absolute;
-  top: 20px;
 }
