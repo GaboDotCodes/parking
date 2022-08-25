@@ -4,6 +4,7 @@ import { observeState } from 'lit-element-state';
 
 import { logOut } from '../../utils/Firebase/auth';
 
+import '@vaadin/app-layout';
 import '@vaadin/tabs';
 
 import '../../components/main-layout/main-layout';
@@ -42,11 +43,9 @@ const render = () => html`
         </vaadin-tab>
       </vaadin-tabs>
 
-      <vaadin-horizontal-layout theme="spacing" style="align-items: baseline">
       <vaadin-button @click="${logOut}">Logout
         <span class="material-icons"slot="prefix">person_off</span>
       </vaadin-button>
-      </vaadin-horizontal-layout>
     </div>
     
     <slot slot="main-content"></slot>
