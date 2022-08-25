@@ -1,7 +1,5 @@
 import { LitElement, html } from 'lit';
 
-import { Router } from '@vaadin/router';
-
 import { signInWithGoogle } from '../../utils/Firebase/auth';
 
 import '../../components/main-layout/main-layout';
@@ -10,7 +8,6 @@ import style from './login-view.css';
 
 const login = async () => {
   await signInWithGoogle();
-  Router.go('/');
 };
 
 const render = () => html`
