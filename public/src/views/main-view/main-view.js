@@ -12,7 +12,8 @@ import '@vaadin/button';
 
 import style from './main-view.css';
 import appState from '../../utils/State/appState';
-import logoUrl from './parquadero.png'
+import logoUrl from './parquadero.png';
+
 const render = () => html`
   <style>${style}</style>
   <main-layout>
@@ -20,7 +21,7 @@ const render = () => html`
     
     <div slot="side-content">
       <div >
-        <img class="avatar" src="${logoUrl}"></img>
+        <img class="avatar" src="${logoUrl}">
       </div>
       <vaadin-tabs orientation='vertical' id="main-nav">
         <vaadin-tab ?disabled=${!appState.parking}>
@@ -43,10 +44,8 @@ const render = () => html`
 
       <vaadin-horizontal-layout theme="spacing" style="align-items: baseline">
       <vaadin-button @click="${logOut}">Logout
-      <span class="material-icons"slot="prefix">
-person_off
-</span>
-    </vaadin-button>
+        <span class="material-icons"slot="prefix">person_off</span>
+      </vaadin-button>
       </vaadin-horizontal-layout>
     </div>
     
